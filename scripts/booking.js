@@ -8,12 +8,20 @@ let selected = "full";
 /********* colour change days of week *********/
 // when the day buttons are clicked, we will apply the "clicked" class to that element, and update any other relevant variables. Then, we can recalculate the total cost.
 // added challenge: don't update the dayCounter if the same day is clicked more than once. hint: .classList.contains() might be helpful here!
-const dayButtons = document.querySelectorAll('.blue-hover');
+const dayButtons = document.querySelectorAll('.day-selector > li');
 
 dayButtons.forEach(dayButton => {
-    dayButton.addEventListener('click', () => {
-        document.querySelector('.clicked').classList.remove('clicked')
-        dayButton.classList.add('clicked');
+    dayButton.addEventListener('click', (e) => {
+        dayButtons.forEach(dayButton => {
+            dayButton.classList.remove('clicked')
+        })
+        e.target.classList.add('clicked')
+
+
+        // console.log (e) 
+        // document.querySelector('li').classList.remove('clicked')
+        // dayButtons.classList.remove('clicked')
+        // dayButton.classList.add('clicked');
     });
 });
 
