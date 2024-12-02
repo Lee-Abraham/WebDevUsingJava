@@ -16,12 +16,6 @@ dayButtons.forEach(dayButton => {
             dayButton.classList.remove('clicked')
         })
         e.target.classList.add('clicked')
-
-
-        // console.log (e) 
-        // document.querySelector('li').classList.remove('clicked')
-        // dayButtons.classList.remove('clicked')
-        // dayButton.classList.add('clicked');
     });
 });
 
