@@ -16,20 +16,17 @@ dayButtons.forEach(dayButton => {
             dayButton.classList.remove('clicked')
         })
         e.target.classList.add('clicked')
-
-
-        // console.log (e) 
-        // document.querySelector('li').classList.remove('clicked')
-        // dayButtons.classList.remove('clicked')
-        // dayButton.classList.add('clicked');
     });
 });
 
 
 /********* clear days *********/
 // when the clear-button is clicked, the "clicked" class is removed from all days, any other relevant variables are reset, and the calculated cost is set to 0.
-
-
+document.getElementById("clear-button").addEventListener('click', (e) => {
+    dayButtons.forEach(dayButton => {
+        dayButton.classList.remove('clicked')
+    });
+});
 
 
 
