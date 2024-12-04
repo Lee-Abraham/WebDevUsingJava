@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 /********* create variables *********/
 // useful variables might be: the cost per day, the number of days selected, and elements on the screen that will be clicked or will need to be modified. 
 // Do any of these variables need to be initialized when the page is loaded? 
@@ -13,29 +14,37 @@ const dayButtons = document.querySelectorAll('.day-selector > li');
 dayButtons.forEach(dayButton => {
     dayButton.addEventListener('click', (e) => {
         dayButtons.forEach(dayButton => {
-            dayButton.classList.remove('clicked')
-        })
-        e.target.classList.add('clicked')
+            dayButton.classList.remove('clicked');
+        });
+        e.target.classList.add('clicked');
     });
 });
 
 
 /********* clear days *********/
 // when the clear-button is clicked, the "clicked" class is removed from all days, any other relevant variables are reset, and the calculated cost is set to 0.
-document.getElementById("clear-button").addEventListener('click', (e) => {
-    dayButtons.forEach(dayButton => {
-        dayButton.classList.remove('clicked')
-        money.innerHTML = "0";
+
+const ClearButton = document.getElementById("clear-button"); 
+ClearButton.addEventListener('click', () => {
+const days = document.querySelectorAll(".day-selector .blue-hover");
+let calculatedCost = 0;
+
+function clearDays()    {
+    days.forEach(day => {
+        day.classList.remove('clicked');
     });
+
+    calculatedCost = 0;
+
+}
+ClearButton.addEventListener('click', clearDays);
 });
-
-
 
 
 /********* change rate *********/
 // when the half-day button is clicked, set the daily rate to $20, add the "clicked" class to the "half" element, remove it from the "full" element, and recalculate the total cost.
-const halfs = document.getElementById("half")
-halfs.addEventListener('click', (e) => {
+const halfs = document.getElementById("half");
+halfs.addEventListener('click', () => {
     e.target.classList.add("clicked");
     fulls.classList.remove("clicked");
 });
@@ -43,8 +52,8 @@ halfs.addEventListener('click', (e) => {
 
 
 // when the full-day button is clicked, the daily rate is set back to $35, the clicked class is added to "full" and removed from "half", and the total cost is recalculated.
-const fulls = document.getElementById("full")
-fulls.addEventListener('click', (e) => {
+const fulls = document.getElementById("full");
+fulls.addEventListener('click', () => {
     e.target.classList.add("clicked");
     halfs.classList.remove("clicked");
 });
@@ -54,11 +63,11 @@ fulls.addEventListener('click', (e) => {
 
 /********* calculate *********/
 // when a calculation is needed, set the innerHTML of the calculated-cost element to the appropriate value
-const money = document.getElementById("calculated-cost")
-halfs.addEventListener('click', (e) => {
+const money = document.getElementById("calculated-cost");
+halfs.addEventListener('click', () => {
     money.innerHTML = "20";
 });
-fulls.addEventListener("click", (e) => {
+fulls.addEventListener("click", () => {
     money.innerHTML = "35";
 });
 
