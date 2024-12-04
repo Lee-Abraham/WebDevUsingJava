@@ -27,14 +27,12 @@ dayButtons.forEach(dayButton => {
 const ClearButton = document.getElementById("clear-button"); 
 ClearButton.addEventListener('click', () => {
 const days = document.querySelectorAll(".day-selector .blue-hover");
-let calculatedCost = 0;
 
 function clearDays()    {
     days.forEach(day => {
         day.classList.remove('clicked');
+        money.innerHTML = "0";
     });
-
-    calculatedCost = 0;
 
 }
 ClearButton.addEventListener('click', clearDays);
@@ -44,7 +42,7 @@ ClearButton.addEventListener('click', clearDays);
 /********* change rate *********/
 // when the half-day button is clicked, set the daily rate to $20, add the "clicked" class to the "half" element, remove it from the "full" element, and recalculate the total cost.
 const halfs = document.getElementById("half");
-halfs.addEventListener('click', () => {
+halfs.addEventListener('click', (e) => {
     e.target.classList.add("clicked");
     fulls.classList.remove("clicked");
 });
@@ -53,7 +51,7 @@ halfs.addEventListener('click', () => {
 
 // when the full-day button is clicked, the daily rate is set back to $35, the clicked class is added to "full" and removed from "half", and the total cost is recalculated.
 const fulls = document.getElementById("full");
-fulls.addEventListener('click', () => {
+fulls.addEventListener('click', (e) => {
     e.target.classList.add("clicked");
     halfs.classList.remove("clicked");
 });
