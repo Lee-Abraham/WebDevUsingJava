@@ -25,6 +25,7 @@ dayButtons.forEach(dayButton => {
 document.getElementById("clear-button").addEventListener('click', (e) => {
     dayButtons.forEach(dayButton => {
         dayButton.classList.remove('clicked')
+        money.innerHTML = "0";
     });
 });
 
@@ -33,18 +34,32 @@ document.getElementById("clear-button").addEventListener('click', (e) => {
 
 /********* change rate *********/
 // when the half-day button is clicked, set the daily rate to $20, add the "clicked" class to the "half" element, remove it from the "full" element, and recalculate the total cost.
-
+const halfs = document.getElementById("half")
+halfs.addEventListener('click', (e) => {
+    e.target.classList.add("clicked");
+    fulls.classList.remove("clicked");
+});
 
 
 
 // when the full-day button is clicked, the daily rate is set back to $35, the clicked class is added to "full" and removed from "half", and the total cost is recalculated.
-
+const fulls = document.getElementById("full")
+fulls.addEventListener('click', (e) => {
+    e.target.classList.add("clicked");
+    halfs.classList.remove("clicked");
+});
 
 
 
 
 /********* calculate *********/
 // when a calculation is needed, set the innerHTML of the calculated-cost element to the appropriate value
-
+const money = document.getElementById("calculated-cost")
+halfs.addEventListener('click', (e) => {
+    money.innerHTML = "20";
+});
+fulls.addEventListener("click", (e) => {
+    money.innerHTML = "35";
+});
 
 
