@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 /********* create variables *********/
 // useful variables might be: the cost per day, the number of days selected, and elements on the screen that will be clicked or will need to be modified. 
 // Do any of these variables need to be initialized when the page is loaded? 
@@ -29,9 +30,21 @@ dayButtons.forEach(dayButton => {
 /********* clear days *********/
 // when the clear-button is clicked, the "clicked" class is removed from all days, any other relevant variables are reset, and the calculated cost is set to 0.
 
+const ClearButton = document.getElementById("clear-button"); 
+ClearButton.addEventListener('click', () => {
+const days = document.querySelectorAll(".day-selector .blue-hover");
+let calculatedCost = 0;
 
+function clearDays()    {
+    days.forEach(day => {
+        day.classList.remove('clicked');
+    });
 
+    calculatedCost = 0;
 
+}
+ClearButton.addEventListener('click', clearDays);
+});
 
 
 /********* change rate *********/
